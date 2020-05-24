@@ -1,0 +1,60 @@
+---
+apiVersion: insight-valley.com.br/v1
+kind: ServiceChecklist
+metadata:
+  name: ServiceChecklistTemplate
+spec:
+  description: This is a description of the service's purpose and responsibilities
+
+  ecosystem: Metadata
+  applicationGroup: ServiceChecklists
+
+  serviceOwners:
+    tribe: SRE
+    squad: SRE
+    lead: gabriel.dantas@insight-valley.com.br
+    owner:
+      - gabriel.dantas@insight-valley.com.br
+      - gabriel.dantas@insight-valley.com.br
+
+  applications:
+    - type: web
+      name: app-01
+      description: brief explanation about the application
+      language: java
+      access: internal
+
+    - type: worker
+      name: app-01-worker
+      description: brief explanation about the application
+      idempotence: if you are a worker, we'd like to know how you guarantee idempotence of consumed messages, and if can receive messages out of order.
+      language: java
+      access: none
+
+  resources:
+    - resource: database
+      type: postgres
+    - resource: queue
+      type: sqs
+
+  auditing:
+    enabled: true
+    description: tell us how auditing is achieved in the service
+
+  maintenanceWindow: 0h
+
+  stakeholders:
+    engineeringManagers:
+      - engineering-managers@insight-valley.com.br
+    dataEngineering:
+      - data-engineering@insight-valley.com.br
+    SREs:
+      - gabriel.dantas@insight-valley.com.br
+
+  channels:
+    squad:  '#team-gary'
+    alerts: '#gary-alerts'
+
+  dates:
+    launch: 01/06/2020
+
